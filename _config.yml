@@ -12,9 +12,9 @@ description: "个人技术公众号：henery  分享资源 | 学习路线"
 #
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://github.com/lemonchann/images/raw/master/gzh/%E6%96%87%E6%9C%AB%E6%8E%A8%E5%B9%BF%E6%96%87%E6%A1%88.png
+avatar: https://avatars.githubusercontent.com/u/31280810?s=40&v=4
 # 你的favicon（出现在浏览器tab上）图片URL，建议使用较小(64px × 64px)的图片
-favicon: https://github.com/lemonchann/lemonchann.github.io/raw/master/images/favicon.ico
+favicon: https://avatars.githubusercontent.com/u/31280810?s=40&v=4
 
 # Tabs in header. There are 'Blog', 'About', 'Archive', 'Tags'
 # and URL Link(e.g. 'Theme' tab below) tabs. If you don't need one, just delete
@@ -36,14 +36,14 @@ excerpt_separator: <!-- more -->
 
 # Includes an icon in the footer for each username you enter
 footer-links:
-  #weibo: frommidworld #请输入你的微博个性域名 https://www.weibo.com/<thispart>
+  # weibo: frommidworld #请输入你的微博个性域名 https://www.weibo.com/<thispart>
   behance: # https://www.behance.net/<username>
   dribbble:
-  zhihu: ning-meng-cheng-31-94
-  email: llong87@163.com
+  # zhihu: ning-meng-cheng-31-94
+  # email: llong87@163.com
   facebook:
   flickr:
-  github: lemonchann 
+  # github: lemonchann 
   googleplus: # anything in your profile username that comes after plus.google.com/
   instagram:
   linkedin:
