@@ -1,65 +1,69 @@
 ---
 layout: post
-title: "Jenkins+Ant+JmeterÊµÏÖ½Ó¿Ú×Ô¶¯»¯"
+title: "Jenkins+Ant+Jmeterå®ç°æ¥å£è‡ªåŠ¨åŒ–"
 date:   2018-10-10
 tags: [Jenkins]
 comments: true
 author: henerylive
 ---
 
-## _Jenkins+Ant+Jmeter´î½¨½Ó¿Ú×Ô¶¯»¯_
-## _Author£ºHenery_
+ä»Šå¤©è®°å½•çš„æ˜¯Jenkins+Ant+Jmeterçš„æ­å»º
 
-Jenkins+Ant+JmeterĞèÒªÔËĞĞÔÚJava»·¾³ÉÏ£¬ÇÒÓĞ¶ÔÓ¦µÄJDK°æ±¾ÒªÇó¡£
+<!-- more -->
 
-- °²×°JDK
-- °²×°Jmeter
-- °²×°Ant
-- °²×°Jenkins
+## _Jenkins+Ant+Jmeteræ­å»ºæ¥å£è‡ªåŠ¨åŒ–_
+## _Authorï¼šHenery_
 
-## 1 °²×°JDK
-1.1 ÏÂÔØµØÖ·£ºhttps://www.oracle.com/java/technologies/downloads/
-1.2 ÓÒ»÷¡°ÎÒµÄµçÄÔ¡±£¬µã»÷¡°ÊôĞÔ¡±£¬µã»÷¡°¸ß¼¶ÏµÍ³ÉèÖÃ¡±£¬µã»÷¡°»·¾³±äÁ¿¡±£¬ÕÒµ½¡°ÏµÍ³±äÁ¿¡±£¬µã»÷¡°ĞÂ½¨¡±/¡°±à¼­¡±
-```sh
-±äÁ¿Ãû£ºJAVA_HOME
-±äÁ¿Öµ£ºE:\Java\jdk-17.0.7£¨¸ù¾İÊµ¼Ê°²×°Ä¿Â¼ÅäÖÃ£©
-±äÁ¿Ãû£ºCLASSPATH
-±äÁ¿Öµ£º.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; 
-±äÁ¿Ãû£ºPath
-±äÁ¿Öµ£º%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;£¨ÔÚPath×îÇ°±ß×·¼Ó£©
+Jenkins+Ant+Jmeteréœ€è¦è¿è¡Œåœ¨Javaç¯å¢ƒä¸Šï¼Œä¸”æœ‰å¯¹åº”çš„JDKç‰ˆæœ¬è¦æ±‚ã€‚
+
+- å®‰è£…JDK
+- å®‰è£…Jmeter
+- å®‰è£…Ant
+- å®‰è£…Jenkins
+
+## 1 å®‰è£…JDK
+1.1 ä¸‹è½½åœ°å€ï¼šhttps://www.oracle.com/java/technologies/downloads/
+1.2 å³å‡»â€œæˆ‘çš„ç”µè„‘â€ï¼Œç‚¹å‡»â€œå±æ€§â€ï¼Œç‚¹å‡»â€œé«˜çº§ç³»ç»Ÿè®¾ç½®â€ï¼Œç‚¹å‡»â€œç¯å¢ƒå˜é‡â€ï¼Œæ‰¾åˆ°â€œç³»ç»Ÿå˜é‡â€ï¼Œç‚¹å‡»â€œæ–°å»ºâ€/â€œç¼–è¾‘â€
+```yml
+å˜é‡åï¼šJAVA_HOME
+å˜é‡å€¼ï¼šE:\Java\jdk-17.0.7ï¼ˆæ ¹æ®å®é™…å®‰è£…ç›®å½•é…ç½®ï¼‰
+å˜é‡åï¼šCLASSPATH
+å˜é‡å€¼ï¼š.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; 
+å˜é‡åï¼šPath
+å˜é‡å€¼ï¼š%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;ï¼ˆåœ¨Pathæœ€å‰è¾¹è¿½åŠ ï¼‰
 ```
-1.3 ²âÊÔJDKÊÇ·ñ°²×°³É¹¦
-ÔËĞĞcmd£¬¼üÈëÃüÁîjava -version»òÕßjava»òjavac£º
-```sh
+1.3 æµ‹è¯•JDKæ˜¯å¦å®‰è£…æˆåŠŸ
+è¿è¡Œcmdï¼Œé”®å…¥å‘½ä»¤java -versionæˆ–è€…javaæˆ–javacï¼š
+```yml
 java -version
 ```
-ÅäÖÃ³É¹¦£¬ÏÔÊ¾java°æ±¾ĞÅÏ¢£º
+é…ç½®æˆåŠŸï¼Œæ˜¾ç¤ºjavaç‰ˆæœ¬ä¿¡æ¯ï¼š
 java version "17.0.7" 2023-04-18 LTS
 Java(TM) SE Runtime Environment (build 17.0.7+8-LTS-224)
 Java HotSpot(TM) 64-Bit Server VM (build 17.0.7+8-LTS-224, mixed mode, sharing)
 
-## 2 °²×°Jmeter
-2.1 ÏÂÔØµØÖ·£ºhttps://jmeter.apache.org/download_jmeter.cgi
-2.2 ½âÑ¹JmeterÎÄ¼ş£¬Ë«»÷JmeterµÄbinÄ¿Â¼ÏÂµÄjmeter.bat£¬ÔËĞĞ¿ÉÊÓ»¯½çÃæ£¬£¬ÔËĞĞÊ§°Ü´ó¸ÅÂÊÊÇJDK°æ±¾²»¶ÔÓ¦£¬¸ù¾İÃüÁî´°¿ÚµÄÌáÊ¾ÕÒ¶ÔÓ¦µÄ°æ±¾£¬½âÑ¹ºóÔÙ´ÎÔËĞĞ¼´¿É¡£
+## 2 å®‰è£…Jmeter
+2.1 ä¸‹è½½åœ°å€ï¼šhttps://jmeter.apache.org/download_jmeter.cgi
+2.2 è§£å‹Jmeteræ–‡ä»¶ï¼ŒåŒå‡»Jmeterçš„binç›®å½•ä¸‹çš„jmeter.batï¼Œè¿è¡Œå¯è§†åŒ–ç•Œé¢ï¼Œï¼Œè¿è¡Œå¤±è´¥å¤§æ¦‚ç‡æ˜¯JDKç‰ˆæœ¬ä¸å¯¹åº”ï¼Œæ ¹æ®å‘½ä»¤çª—å£çš„æç¤ºæ‰¾å¯¹åº”çš„ç‰ˆæœ¬ï¼Œè§£å‹åå†æ¬¡è¿è¡Œå³å¯ã€‚
 
-## 3 °²×°Ant
-3.1 ÏÂÔØµØÖ·£ºhttps://ant.apache.org/bindownload.cgi
-3.2 ½âÑ¹AntÎÄ¼ş
-3.3 ÓÒ»÷¡°ÎÒµÄµçÄÔ¡±£¬µã»÷¡°ÊôĞÔ¡±£¬µã»÷¡°¸ß¼¶ÏµÍ³ÉèÖÃ¡±£¬µã»÷¡°»·¾³±äÁ¿¡±£¬ÕÒµ½¡°ÏµÍ³±äÁ¿¡±£¬µã»÷¡°ĞÂ½¨¡±/¡°±à¼­¡±
-```sh
-±äÁ¿Ãû£ºANT_HOME
-±äÁ¿Öµ£ºE:\apache-ant-1.9.16£¨¸ù¾İÊµ¼Ê°²×°Ä¿Â¼ÅäÖÃ£©
-±äÁ¿Ãû£ºPath
-±äÁ¿Öµ£º%ANT_HOME%\bin;£¨ÔÚPath×îÇ°±ß×·¼Ó£©
+## 3 å®‰è£…Ant
+3.1 ä¸‹è½½åœ°å€ï¼šhttps://ant.apache.org/bindownload.cgi
+3.2 è§£å‹Antæ–‡ä»¶
+3.3 å³å‡»â€œæˆ‘çš„ç”µè„‘â€ï¼Œç‚¹å‡»â€œå±æ€§â€ï¼Œç‚¹å‡»â€œé«˜çº§ç³»ç»Ÿè®¾ç½®â€ï¼Œç‚¹å‡»â€œç¯å¢ƒå˜é‡â€ï¼Œæ‰¾åˆ°â€œç³»ç»Ÿå˜é‡â€ï¼Œç‚¹å‡»â€œæ–°å»ºâ€/â€œç¼–è¾‘â€
+```yml
+å˜é‡åï¼šANT_HOME
+å˜é‡å€¼ï¼šE:\apache-ant-1.9.16ï¼ˆæ ¹æ®å®é™…å®‰è£…ç›®å½•é…ç½®ï¼‰
+å˜é‡åï¼šPath
+å˜é‡å€¼ï¼š%ANT_HOME%\bin;ï¼ˆåœ¨Pathæœ€å‰è¾¹è¿½åŠ ï¼‰
 ```
-3.4 ²âÊÔAntÊÇ·ñ°²×°³É¹¦
-ÔËĞĞcmd£¬¼üÈëÃüÁîant -version£º
-```sh
+3.4 æµ‹è¯•Antæ˜¯å¦å®‰è£…æˆåŠŸ
+è¿è¡Œcmdï¼Œé”®å…¥å‘½ä»¤ant -versionï¼š
+```yml
 ant -version
 ```
-ÅäÖÃ³É¹¦£¬ÏÔÊ¾ant°æ±¾ĞÅÏ¢£º
+é…ç½®æˆåŠŸï¼Œæ˜¾ç¤ºantç‰ˆæœ¬ä¿¡æ¯ï¼š
 Apache Ant(TM) version 1.9.16 compiled on July 10 2021
 
-## 4 °²×°Jenkins
-4.1 ÏÂÔØµØÖ·£ºhttps://www.jenkins.io/zh/download/
-4.2 °²×°ºó£¬ÃÜÂë±£´æÔÚC:\Users\guohl\.jenkins\secrets\initialAdminPasswordÎÄ¼şÖĞ£¨Â·¾¶¿´°²×°Çé¿ö£©
+## 4 å®‰è£…Jenkins
+4.1 ä¸‹è½½åœ°å€ï¼šhttps://www.jenkins.io/zh/download/
+4.2 å®‰è£…åï¼Œå¯†ç ä¿å­˜åœ¨C:\Users\guohl\.jenkins\secrets\initialAdminPasswordæ–‡ä»¶ä¸­ï¼ˆè·¯å¾„çœ‹å®‰è£…æƒ…å†µï¼‰
